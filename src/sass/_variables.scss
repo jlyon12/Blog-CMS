@@ -1,0 +1,98 @@
+@font-face {
+	font-family: 'Inter';
+	src: url('/src/assets/fonts/Inter-VariableFont_slnt\,wght.ttf')
+		format('truetype-variations');
+	font-weight: 100 900;
+}
+
+// Typography
+
+$ff-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+	Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+$ff-primary: 'Inter', $ff-system;
+
+$fw-regular: 400;
+$fw-semibold: 500;
+$fw-bold: 600;
+$fw-xbold: 700;
+
+$fs-sm: 0.875rem;
+$fs-base: 1rem;
+$fs-md: 1.125rem;
+$fs-lg: 1.5rem;
+$fs-xl: 2rem;
+$fs-2xl: 4.5rem;
+$fs-5xl: 8rem;
+$fs-8xl: 12rem;
+
+//Colors
+
+$clr-bg-light: #ffffff;
+$clr-text-light: #1a1a1a;
+$clr-text-alternate-light: #667085;
+$clr-text-accent-light: #6941c6;
+$clr-hero-border-light: #1a1a1a;
+$clr-input-border-light: #667085;
+$clr-btn-bg-light: #6941c6;
+$clr-btn-text-light: #ffffff;
+
+$clr-bg-dark: #090d1f;
+$clr-text-dark: #fff;
+$clr-text-alternate-dark: #c0c5d0;
+$clr-text-accent-dark: #6941c6;
+$clr-hero-border-dark: #ffffff;
+$clr-btn-bg-dark: #6941c6;
+$clr-btn-text-dark: #ffffff;
+$clr-input-border-dark: #667085;
+
+// Theme Configuration
+
+$themes: (
+	light: (
+		bg: $clr-bg-light,
+		text: $clr-text-light,
+		textAlt: $clr-text-alternate-light,
+		textAccent: $clr-text-accent-light,
+		heroBorder: $clr-hero-border-light,
+		btnBg: $clr-btn-bg-light,
+		btnText: $clr-btn-text-light,
+		inputBorder: $clr-input-border-light,
+	),
+	dark: (
+		bg: $clr-bg-dark,
+		text: $clr-text-dark,
+		textAlt: $clr-text-alternate-dark,
+		textAccent: $clr-text-accent-dark,
+		heroBorder: $clr-hero-border-dark,
+		btnBg: $clr-btn-bg-dark,
+		btnText: $clr-btn-text-dark,
+		inputBorder: $clr-input-border-dark,
+	),
+);
+
+// Spacing
+
+$padding-1: 0.25rem;
+$padding-2: 0.5rem;
+$padding-3: 0.75rem;
+$padding-4: 1rem;
+$padding-5: 1.25rem;
+
+$gap-1: 0.25rem;
+$gap-2: 0.5rem;
+$gap-3: 0.75rem;
+$gap-4: 1rem;
+$gap-5: 1.25rem;
+
+$margin-1: 0.25rem;
+$margin-2: 0.5rem;
+$margin-3: 0.75rem;
+$margin-4: 1rem;
+$margin-5: 1.25rem;
+
+// Breakpoints
+
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
