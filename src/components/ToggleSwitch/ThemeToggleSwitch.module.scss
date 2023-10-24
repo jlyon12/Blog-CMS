@@ -1,0 +1,71 @@
+@use '/src/sass/index' as *;
+
+.toggleSwitch {
+	position: relative;
+	width: 96px;
+
+	.checkbox {
+		display: none;
+	}
+	.label {
+		display: block;
+		overflow: hidden;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+	.inner {
+		display: block;
+		width: 200%;
+		margin-left: -100%;
+		transition: margin 0.3s ease-in 0s;
+	}
+	.inner:before,
+	.inner:after {
+		float: left;
+		width: 50%;
+		height: 40px;
+		padding: 16px;
+		line-height: 36px;
+		color: #fff;
+		font-weight: bold;
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+	}
+	.inner:before {
+		content: url('/src/assets/icons/sun.svg');
+		@include themify($themes) {
+			background-color: themed('text');
+		}
+		display: flex;
+		justify-content: left;
+	}
+	.inner:after {
+		content: url('/src/assets/icons/moon.svg');
+		@include themify($themes) {
+			background-color: themed('text');
+		}
+		display: flex;
+		justify-content: right;
+	}
+	.switch {
+		display: block;
+		width: 24px;
+		margin: 8px 16px;
+		@include themify($themes) {
+			background-color: themed('bg');
+		}
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 42px;
+		border-radius: 16px;
+		transition: all 0.3s ease-in 0s;
+	}
+	.checkbox:checked + .label .inner {
+		margin-left: 0;
+	}
+	.checkbox:checked + .label .switch {
+		right: 0px;
+	}
+}
