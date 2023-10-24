@@ -14,7 +14,7 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.navContainer}>
-				<Link>Your name</Link>
+				<Link>Admin</Link>
 				<button className={styles.menuBtn} onClick={toggleNav}>
 					<MdOutlineMenu size={32} />
 				</button>
@@ -23,19 +23,16 @@ const Header = () => {
 						className={`
 							${styles.navMenu} ${isOpen ? styles.mobileMenu : styles.desktopMenu}`}
 					>
-						<Link className={styles.mobileMenuTitle}>Your name</Link>
+						<Link className={styles.mobileMenuTitle}>Admin</Link>
 						<ul>
 							<li>
-								<Link>Blog</Link>
+								<Link to="/login">Login</Link>
 							</li>
 							<li>
-								<Link>Project</Link>
+								<Link>Manage</Link>
 							</li>
 							<li>
-								<Link>About</Link>
-							</li>
-							<li>
-								<Link>Newsletter</Link>
+								<Link>Create</Link>
 							</li>
 						</ul>
 						<ThemeToggleSwitch
