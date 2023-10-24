@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { BarLoader } from 'react-spinners';
+
+import useLogin from 'src/hooks/useLogin';
 import styles from './Login.module.scss';
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const { isLoading, error, login } = useLogin();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		login(email, password);
 	};
+
 	return (
 		<main className={styles.main}>
 			<form className={styles.form} onSubmit={handleSubmit}>
@@ -33,7 +39,15 @@ const Login = () => {
 						/>
 					</label>
 				</fieldset>
-				<button className={styles.btn}>Log In</button>
+				<button disabled={isLoading} className={styles.btn}>
+					Log In
+				</button>
+				<BarLoader
+					color="#6941c6"
+					className={styles.spinner}
+					loading={isLoading}
+				/>
+				{error && <p className={styles.error}>{error}</p>}
 			</form>
 		</main>
 	);

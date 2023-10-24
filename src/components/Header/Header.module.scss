@@ -26,6 +26,11 @@
 		@include nav-link;
 		margin: $margin-2;
 	}
+	button {
+		@include btn-reset;
+		@include nav-link;
+		margin: $margin-2;
+	}
 	.menuBtn {
 		@include btn-reset;
 		margin-left: auto;

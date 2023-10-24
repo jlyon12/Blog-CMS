@@ -43,5 +43,16 @@
 	margin-inline: auto;
 	&:disabled {
 		cursor: not-allowed;
+		opacity: 0.5;
 	}
+}
+
+.spinner {
+	margin: 0 auto;
+}
+.error {
+	text-align: center;
+	letter-spacing: 0.25px;
+	font-size: $fs-md;
+	color: #dd1155;
 }
