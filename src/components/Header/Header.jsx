@@ -34,7 +34,7 @@ const Header = () => {
 									<Link>Manage</Link>
 								</li>
 								<li>
-									<Link>Create</Link>
+									<Link to="create">Create</Link>
 								</li>
 								<li>
 									<button onClick={logout}>Logout</button>
