@@ -33,8 +33,12 @@ $clr-text-alternate-light: #667085;
 $clr-text-accent-light: #6941c6;
 $clr-hero-border-light: #1a1a1a;
 $clr-input-border-light: #667085;
+$clr-input-bg-light: #ffffff;
 $clr-btn-bg-light: #6941c6;
 $clr-btn-text-light: #ffffff;
+$clr-switch-inactive-light: #667085;
+$clr-switch-active-light: #06d6a0;
+$clr-switch-btn-light: #ffffff;
 
 $clr-bg-dark: #090d1f;
 $clr-text-dark: #fff;
@@ -44,6 +48,10 @@ $clr-hero-border-dark: #ffffff;
 $clr-btn-bg-dark: #6941c6;
 $clr-btn-text-dark: #ffffff;
 $clr-input-border-dark: #667085;
+$clr-input-bg-dark: #667085;
+$clr-switch-inactive-dark: #c0c5d0;
+$clr-switch-active-dark: #06d6a0;
+$clr-switch-btn-dark: #ffffff;
 
 // Theme Configuration
 
@@ -57,6 +65,10 @@ $themes: (
 		btnBg: $clr-btn-bg-light,
 		btnText: $clr-btn-text-light,
 		inputBorder: $clr-input-border-light,
+		inputBg: $clr-input-bg-light,
+		switchInactive: $clr-switch-inactive-light,
+		switchActive: $clr-switch-active-light,
+		switchBtn: $clr-switch-btn-light,
 	),
 	dark: (
 		bg: $clr-bg-dark,
@@ -67,6 +79,10 @@ $themes: (
 		btnBg: $clr-btn-bg-dark,
 		btnText: $clr-btn-text-dark,
 		inputBorder: $clr-input-border-dark,
+		inputBg: $clr-input-bg-dark,
+		switchInactive: $clr-switch-inactive-dark,
+		switchActive: $clr-switch-active-dark,
+		switchBtn: $clr-switch-btn-dark,
 	),
 );
 

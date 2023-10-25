@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import useAuthContext from './hooks/useAuthContext';
-
+import useAuthContext from 'src//hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
 import Login from 'src/pages/Login/Login';
 import Create from 'src/pages/Create/Create';
+import Manage from 'src/pages/Manage/Manage';
 
 const Router = () => {
 	const { user } = useAuthContext();
@@ -15,6 +15,7 @@ const Router = () => {
 			children: [
 				{ index: true, element: user ? null : <Login /> },
 				{ path: 'create', element: user ? <Create /> : <Login /> },
+				{ path: 'manage', element: user ? <Manage /> : <Login /> },
 			],
 		},
 	]);

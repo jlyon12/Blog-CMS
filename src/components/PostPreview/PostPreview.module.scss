@@ -1,0 +1,37 @@
+@use '/src/sass/index.scss' as *;
+.post {
+	display: grid;
+	gap: $gap-2;
+	.titleContainer {
+		display: flex;
+		justify-content: space-between;
+		gap: $gap-4;
+	}
+	.postActions {
+		display: flex;
+		gap: $gap-4;
+		align-items: center;
+	}
+
+	.readLink {
+		@include link-reset;
+
+		display: flex;
+		position: relative;
+		top: 0.1em;
+
+		@include themify($themes) {
+			color: themed('textAccent');
+		}
+
+		svg {
+			flex-shrink: 0;
+		}
+	}
+}
+
+.hr {
+	@include themify($themes) {
+		border-top: 1px solid themed('textAccent');
+	}
+}
