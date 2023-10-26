@@ -49,6 +49,19 @@ const PostPreview = ({ post }) => {
 		}
 	};
 
+	const deletePost = async (post) => {
+		const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${user.token}`,
+			},
+		});
+		const json = await res.json();
+		if (res.ok) {
+			dispatch({ type: 'DELETE_POST', payload: json });
+		}
+	};
+
 	return (
 		<>
 			<div key={post._id} className={styles.post}>
@@ -78,6 +91,9 @@ const PostPreview = ({ post }) => {
 						/>
 					</div>
 					<Link to={`/edit/${post._id}`}> Modify </Link>
+					<button className={styles.btnDelete} onClick={() => deletePost(post)}>
+						Delete
+					</button>
 				</div>
 			</div>
 			<hr className={styles.hr} />

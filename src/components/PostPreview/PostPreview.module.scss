@@ -41,6 +41,10 @@
 		font-size: $fs-sm;
 		font-weight: 300;
 	}
+
+	.btnDelete {
+		@include btn-delete;
+	}
 }
 
 .hr {
