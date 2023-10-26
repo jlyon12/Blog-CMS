@@ -2,12 +2,14 @@ import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import styles from './Create.module.scss';
 const Create = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
+	const { darkMode } = useDarkModeContext();
 	const editorRef = useRef(null);
 
 	const createPost = async (post) => {
@@ -69,11 +71,13 @@ const Create = () => {
 							],
 							toolbar:
 								'undo redo | blocks | ' +
-								'bold italic forecolor | alignleft aligncenter ' +
+								'bold italic forecolor  | alignleft aligncenter ' +
 								'alignright alignjustify | bullist numlist outdent indent | ' +
 								'removeformat | help',
 							content_style:
 								'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+							skin: darkMode ? 'oxide-dark' : 'oxide',
+							content_css: darkMode ? 'dark' : 'default',
 						}}
 						onEditorChange={() => setBody(editorRef.current.getContent())}
 					/>

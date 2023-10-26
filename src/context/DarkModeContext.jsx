@@ -4,7 +4,9 @@ import propTypes from 'prop-types';
 const DarkModeContext = createContext();
 
 const DarkModeContextProvider = ({ children }) => {
-	const [darkMode, setDarkMode] = useState(false);
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+	const [darkMode, setDarkMode] = useState(prefersDark);
 	const toggleDarkMode = () => {
 		setDarkMode(!darkMode);
 	};

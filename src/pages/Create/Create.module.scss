@@ -31,6 +31,8 @@
 		box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 		@include themify($themes) {
 			border: 1px solid themed('inputBorder');
+			background-color: themed('inputBg');
+			color: themed('text');
 		}
 	}
 }

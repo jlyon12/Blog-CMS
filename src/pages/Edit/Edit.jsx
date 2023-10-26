@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate, useParams } from 'react-router';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import styles from './Edit.module.scss';
 const Edit = () => {
 	const [originalPost, setOriginalPost] = useState({ title: '', body: '' });
@@ -11,6 +12,7 @@ const Edit = () => {
 	const { id } = useParams();
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
+	const { darkMode } = useDarkModeContext();
 	const editorRef = useRef(null);
 
 	useEffect(() => {
@@ -101,6 +103,8 @@ const Edit = () => {
 								'removeformat | help',
 							content_style:
 								'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+							skin: darkMode ? 'oxide-dark' : 'oxide',
+							content_css: darkMode ? 'dark' : 'default',
 						}}
 						onEditorChange={() => setBody(editorRef.current.getContent())}
 					/>
