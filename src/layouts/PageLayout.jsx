@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import Header from 'src/components/Header/Header';
+import ConfirmModal from 'src/components/ConfirmModal/ConfirmModal';
 import styles from './PageLayout.module.scss';
 const PageLayout = () => {
 	const { darkMode } = useDarkModeContext();
@@ -9,6 +10,7 @@ const PageLayout = () => {
 			<div className={styles.app}>
 				<Header />
 				<Outlet />
+				<ConfirmModal />
 			</div>
 		</div>
 	);

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import Router from 'src/router';
 import { DarkModeContextProvider } from 'src/context/DarkModeContext';
 import { AuthContextProvider } from 'src/context/AuthContext';
-import { PostsContextProvider } from './context/PostsContext';
+import { PostsContextProvider } from 'src/context/PostsContext';
+import { ConfirmContextProvider } from 'src/context/ConfirmContext';
 import 'src/sass/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<DarkModeContextProvider>
 			<AuthContextProvider>
 				<PostsContextProvider>
-					<Router />
+					<ConfirmContextProvider>
+						<Router />
+					</ConfirmContextProvider>
 				</PostsContextProvider>
 			</AuthContextProvider>
 		</DarkModeContextProvider>

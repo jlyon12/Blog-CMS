@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import useAuthContext from 'src/hooks/useAuthContext';
 import usePostsContext from 'src/hooks/usePostsContext';
 import PostPreview from 'src/components/PostPreview/PostPreview';
+
 import styles from './Manage.module.scss';
 
 const Manage = () => {

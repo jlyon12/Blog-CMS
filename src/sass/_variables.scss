@@ -26,7 +26,8 @@ $fs-5xl: 8rem;
 $fs-8xl: 12rem;
 
 //Colors
-
+$clr-error-light: #ef476f;
+$clr-danger-light: #ef476f;
 $clr-bg-light: #ffffff;
 $clr-text-light: #1a1a1a;
 $clr-text-alternate-light: #667085;
@@ -40,6 +41,8 @@ $clr-switch-inactive-light: #667085;
 $clr-switch-active-light: #06d6a0;
 $clr-switch-btn-light: #ffffff;
 
+$clr-error-dark: #ef476f;
+$clr-danger-dark: #ef476f;
 $clr-bg-dark: #090d1f;
 $clr-text-dark: #fff;
 $clr-text-alternate-dark: #c0c5d0;
@@ -57,6 +60,8 @@ $clr-switch-btn-dark: #ffffff;
 
 $themes: (
 	light: (
+		danger: $clr-danger-light,
+		error: $clr-error-light,
 		bg: $clr-bg-light,
 		text: $clr-text-light,
 		textAlt: $clr-text-alternate-light,
@@ -71,6 +76,8 @@ $themes: (
 		switchBtn: $clr-switch-btn-light,
 	),
 	dark: (
+		danger: $clr-danger-dark,
+		error: $clr-error-dark,
 		bg: $clr-bg-dark,
 		text: $clr-text-dark,
 		textAlt: $clr-text-alternate-dark,

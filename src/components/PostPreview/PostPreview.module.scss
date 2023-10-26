@@ -20,7 +20,11 @@
 		}
 		a {
 			@include link-reset;
-			@include link;
+			@include btn-secondary;
+			@include themify($themes) {
+				background-color: themed(btnBg);
+				color: themed('btnText');
+			}
 			margin-left: auto;
 		}
 	}
@@ -43,7 +47,11 @@
 	}
 
 	.btnDelete {
-		@include btn-delete;
+		@include btn-secondary;
+		@include themify($themes) {
+			background-color: themed(danger);
+			color: themed('btnText');
+		}
 	}
 }
 

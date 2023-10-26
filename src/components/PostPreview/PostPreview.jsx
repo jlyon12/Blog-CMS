@@ -4,13 +4,14 @@ import propTypes from 'prop-types';
 import { format } from 'date-fns';
 import usePostsContext from 'src/hooks/usePostsContext';
 import useAuthContext from 'src/hooks/useAuthContext';
+import useConfirm from 'src/hooks/useConfirm';
 import Switch from 'src/components/Switch/Switch';
 import styles from './PostPreview.module.scss';
 
 const PostPreview = ({ post }) => {
 	const { dispatch } = usePostsContext();
 	const { user } = useAuthContext();
-
+	const { isConfirmed } = useConfirm();
 	const publishPost = async (post) => {
 		const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
 			method: 'PATCH',
@@ -50,15 +51,18 @@ const PostPreview = ({ post }) => {
 	};
 
 	const deletePost = async (post) => {
-		const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
-			method: 'DELETE',
-			headers: {
-				Authorization: `Bearer ${user.token}`,
-			},
-		});
-		const json = await res.json();
-		if (res.ok) {
-			dispatch({ type: 'DELETE_POST', payload: json });
+		const confirmed = await isConfirmed(`Delete ${post.title}? `);
+		if (confirmed) {
+			const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
+				method: 'DELETE',
+				headers: {
+					Authorization: `Bearer ${user.token}`,
+				},
+			});
+			const json = await res.json();
+			if (res.ok) {
+				dispatch({ type: 'DELETE_POST', payload: json });
+			}
 		}
 	};
 

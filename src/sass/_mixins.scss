@@ -96,17 +96,15 @@
 	&:hover,
 	&:focus,
 	&:active {
-		opacity: 0.85;
+		transform: scale(1.05);
+		font-weight: $fw-semibold;
 	}
 }
-
-@mixin btn-delete {
+@mixin btn-secondary {
 	@include btn-reset;
 	padding: $padding-1 $padding-2;
 	border-radius: 8px;
 	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-	background-color: #ef476f;
-	color: #ffffff;
 	&:hover,
 	&:focus,
 	&:active {
