@@ -2,6 +2,7 @@
 .post {
 	display: grid;
 	gap: $gap-2;
+
 	.titleContainer {
 		display: flex;
 		justify-content: space-between;
@@ -11,26 +12,39 @@
 		display: flex;
 		gap: $gap-4;
 		align-items: center;
+		.toggleContainer {
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: center;
+			gap: $gap-2;
+		}
+		a {
+			@include link-reset;
+			@include link;
+			margin-left: auto;
+		}
 	}
 
 	.readLink {
 		@include link-reset;
-
+		@include link;
 		display: flex;
 		position: relative;
 		top: 0.1em;
+		flex-shrink: 0;
 
 		@include themify($themes) {
 			color: themed('textAccent');
 		}
-
-		svg {
-			flex-shrink: 0;
-		}
+	}
+	.postDetails {
+		font-size: $fs-sm;
+		font-weight: 300;
 	}
 }
 
 .hr {
+	border: 0;
 	@include themify($themes) {
 		border-top: 1px solid themed('textAccent');
 	}

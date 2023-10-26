@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { RiArrowRightUpLine } from 'react-icons/ri';
 import propTypes from 'prop-types';
+import { format } from 'date-fns';
 import usePostsContext from 'src/hooks/usePostsContext';
 import useAuthContext from 'src/hooks/useAuthContext';
 import Switch from 'src/components/Switch/Switch';
@@ -63,14 +64,20 @@ const PostPreview = ({ post }) => {
 						</Link>
 					)}
 				</div>
-
+				<div className={styles.postDetails}>
+					<p>Created: {format(new Date(post.createdAt), 'PPPPp')}</p>
+					<p>Modified: {format(new Date(post.updatedAt), 'PPPPp')}</p>
+				</div>
 				<div className={styles.postActions}>
-					<p>{post.is_published ? 'Published' : 'Unpublished'}</p>
-					<Switch
-						isOn={post.is_published}
-						label={post._id + '_toggle'}
-						handleToggle={() => togglePublishPost(post)}
-					/>
+					<div className={styles.toggleContainer}>
+						<p>{post.is_published ? 'Published' : 'Unpublished'}</p>
+						<Switch
+							isOn={post.is_published}
+							label={post._id + '_toggle'}
+							handleToggle={() => togglePublishPost(post)}
+						/>
+					</div>
+					<Link to={`/edit/${post._id}`}> Modify </Link>
 				</div>
 			</div>
 			<hr className={styles.hr} />
@@ -82,6 +89,8 @@ PostPreview.propTypes = {
 	post: propTypes.shape({
 		_id: propTypes.string,
 		title: propTypes.string,
+		createdAt: propTypes.string,
+		updatedAt: propTypes.string,
 		is_published: propTypes.bool,
 	}),
 };
