@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import useAuthContext from 'src/hooks/useAuthContext';
 
 const useLogin = () => {
 	const [isLoading, setIsLoading] = useState(null);
 	const [error, setError] = useState(null);
-
+	const navigate = useNavigate();
 	const { dispatch } = useAuthContext();
 	const login = async (email, password) => {
 		setIsLoading(true);
@@ -28,6 +29,7 @@ const useLogin = () => {
 
 			dispatch({ type: 'LOGIN', payload: json });
 			setIsLoading(false);
+			navigate('/manage');
 		}
 	};
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BarLoader } from 'react-spinners';
-
 import useLogin from 'src/hooks/useLogin';
 import styles from './Login.module.scss';
 const Login = () => {
