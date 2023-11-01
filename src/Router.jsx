@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import useAuthContext from 'src/hooks/useAuthContext';
 import PageLayout from 'src/layouts/PageLayout';
+import NotFound from 'src/pages/NotFound/NotFound';
 import Login from 'src/pages/Login/Login';
 import Create from 'src/pages/Create/Create';
 import Manage from 'src/pages/Manage/Manage';
@@ -28,6 +29,7 @@ const Router = () => {
 						{ path: 'edit/:id', element: <Edit /> },
 					],
 				},
+				{ path: '*', element: <NotFound /> },
 			],
 		},
 	]);

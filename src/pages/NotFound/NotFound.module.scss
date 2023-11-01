@@ -1,0 +1,25 @@
+@use 'src/sass/index.scss' as *;
+.main {
+	flex-grow: 1;
+	padding: calc($padding-4 * 2);
+	display: grid;
+	place-content: center;
+	text-align: center;
+	gap: calc($padding-4 * 2);
+}
+.sectionTitle {
+	@include themify($themes) {
+		color: themed('text');
+	}
+	font-size: $fs-lg;
+	font-weight: $fw-bold;
+}
+.error {
+	margin-inline: auto;
+	color: #dd1155;
+}
+
+.link {
+	@include link;
+	text-decoration: underline;
+}
