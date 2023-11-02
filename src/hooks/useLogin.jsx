@@ -11,11 +11,14 @@ const useLogin = () => {
 		setIsLoading(true);
 		setError(null);
 
-		const res = await fetch('http://localhost:3000/api/user/login/admin', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ email, password }),
-		});
+		const res = await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/user/login/admin`,
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, password }),
+			}
+		);
 
 		const json = await res.json();
 

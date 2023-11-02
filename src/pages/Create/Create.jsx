@@ -13,7 +13,7 @@ const Create = () => {
 	const editorRef = useRef(null);
 
 	const createPost = async (post) => {
-		return await fetch('http://localhost:3000/api/posts/', {
+		return await fetch(`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -11,12 +11,15 @@ const Manage = () => {
 
 	useEffect(() => {
 		const fetchUserPosts = async () => {
-			const res = await fetch('http://localhost:3000/api/posts/', {
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`,
+				{
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 
 			const json = await res.json();
 

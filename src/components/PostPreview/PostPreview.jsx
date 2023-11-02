@@ -13,28 +13,34 @@ const PostPreview = ({ post }) => {
 	const { user } = useAuthContext();
 	const { isConfirmed } = useConfirm();
 	const publishPost = async (post) => {
-		const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${user.token}`,
-			},
-			body: JSON.stringify({ is_published: true }),
-		});
+		const res = await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${post._id}`,
+			{
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+				body: JSON.stringify({ is_published: true }),
+			}
+		);
 		const json = await res.json();
 		if (res.ok) {
 			dispatch({ type: 'UPDATE_POST', payload: json });
 		}
 	};
 	const unpublishPost = async (post) => {
-		const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${user.token}`,
-			},
-			body: JSON.stringify({ is_published: false }),
-		});
+		const res = await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${post._id}`,
+			{
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+				body: JSON.stringify({ is_published: false }),
+			}
+		);
 		const json = await res.json();
 
 		if (res.ok) {
@@ -53,12 +59,15 @@ const PostPreview = ({ post }) => {
 	const deletePost = async (post) => {
 		const confirmed = await isConfirmed(`Delete ${post.title}? `);
 		if (confirmed) {
-			const res = await fetch(`http://localhost:3000/api/posts/${post._id}`, {
-				method: 'DELETE',
-				headers: {
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${post._id}`,
+				{
+					method: 'DELETE',
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 			const json = await res.json();
 			if (res.ok) {
 				dispatch({ type: 'DELETE_POST', payload: json });
@@ -74,7 +83,9 @@ const PostPreview = ({ post }) => {
 					{post.is_published && (
 						<Link
 							className={styles.readLink}
-							to={`http://localhost:5173/posts/${post._id}`}
+							to={`${import.meta.env.VITE_CLIENT_CROSS_ORIGIN}/posts/${
+								post._id
+							}`}
 						>
 							Read
 							<RiArrowRightUpLine className={styles.arrowIcon} size={24} />

@@ -17,11 +17,14 @@ const Edit = () => {
 
 	useEffect(() => {
 		const getBlogPost = async (id) => {
-			const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
-				headers: {
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const res = await fetch(
+				`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 			const json = await res.json();
 			if (res.ok) {
 				setOriginalPost({ title: json.title, body: json.body });
@@ -33,14 +36,17 @@ const Edit = () => {
 	}, [id, user.token]);
 
 	const updatePost = async (post) => {
-		return await fetch(`http://localhost:3000/api/posts/${id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${user.token}`,
-			},
-			body: JSON.stringify(post),
-		});
+		return await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}`,
+			{
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+				body: JSON.stringify(post),
+			}
+		);
 	};
 	const changeIsDetected = () => {
 		if (title === originalPost.title && body === originalPost.body) {
