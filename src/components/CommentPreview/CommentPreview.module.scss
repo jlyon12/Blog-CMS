@@ -1,0 +1,39 @@
+@use '/src/sass/index.scss' as *;
+
+.comment {
+	display: flex;
+	flex-direction: column;
+	gap: $gap-2;
+
+	.header {
+		.author {
+			font-weight: $fw-semibold;
+			@include themify($themes) {
+				color: themed(textAccent);
+			}
+		}
+		.date {
+			font-size: $fs-sm;
+			@include themify($themes) {
+				color: themed(textAlt);
+			}
+		}
+	}
+	.body {
+		padding-inline: $padding-2;
+		font-size: $fs-sm;
+	}
+	.footer {
+		display: flex;
+	}
+}
+.btnDelete {
+	@include btn-secondary;
+	@include themify($themes) {
+		background-color: themed(danger);
+		color: themed('btnText');
+	}
+
+	margin-left: auto;
+	margin-right: $margin-4;
+}

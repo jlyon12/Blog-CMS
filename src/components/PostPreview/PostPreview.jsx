@@ -86,6 +86,7 @@ const PostPreview = ({ post }) => {
 							to={`${import.meta.env.VITE_CLIENT_CROSS_ORIGIN}/posts/${
 								post._id
 							}`}
+							target="_blank"
 						>
 							Read
 							<RiArrowRightUpLine className={styles.arrowIcon} size={24} />
@@ -109,6 +110,12 @@ const PostPreview = ({ post }) => {
 					<button className={styles.btnDelete} onClick={() => deletePost(post)}>
 						Delete
 					</button>
+					<div className={styles.commentControls}>
+						<p>Total Comments : {post.comments.length}</p>
+						{post.comments.length > 0 && (
+							<Link to={`/comments/${post._id}`}> Manage Comments </Link>
+						)}
+					</div>
 				</div>
 			</div>
 			<hr className={styles.hr} />
@@ -123,6 +130,7 @@ PostPreview.propTypes = {
 		createdAt: propTypes.string,
 		updatedAt: propTypes.string,
 		is_published: propTypes.bool,
+		comments: propTypes.array,
 	}),
 };
 export default PostPreview;

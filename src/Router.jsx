@@ -7,6 +7,7 @@ import Login from 'src/pages/Login/Login';
 import Create from 'src/pages/Create/Create';
 import Manage from 'src/pages/Manage/Manage';
 import Edit from 'src/pages/Edit/Edit';
+import Comments from 'src/pages/Comments/Comments';
 import ProtectedRoute from 'src/utils/ProtectedRoute';
 
 const Router = () => {
@@ -27,6 +28,7 @@ const Router = () => {
 						{ path: 'create', element: <Create /> },
 						{ path: 'manage', element: <Manage /> },
 						{ path: 'edit/:id', element: <Edit /> },
+						{ path: 'comments/:id', element: <Comments /> },
 					],
 				},
 				{ path: '*', element: <NotFound /> },

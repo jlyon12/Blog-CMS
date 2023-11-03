@@ -1,0 +1,29 @@
+@use 'src/sass/index.scss' as *;
+
+.main {
+	padding: calc($padding-4 * 2);
+	display: grid;
+	gap: calc($gap-4 * 2);
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: calc($gap-4);
+	}
+	hr {
+		border: 0;
+		@include themify($themes) {
+			border-top: 1px solid themed('textAccent');
+		}
+	}
+	a {
+		@include link;
+		margin: 0 auto;
+	}
+}
+.sectionTitle {
+	@include themify($themes) {
+		color: themed('text');
+	}
+	font-size: $fs-lg;
+	font-weight: $fw-bold;
+}
