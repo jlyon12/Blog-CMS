@@ -26,7 +26,7 @@ const PostPreview = ({ post }) => {
 		);
 		const json = await res.json();
 		if (res.ok) {
-			dispatch({ type: 'UPDATE_POST', payload: json });
+			dispatch({ type: 'UPDATE_POST', payload: json.data });
 		}
 	};
 	const unpublishPost = async (post) => {
@@ -44,7 +44,7 @@ const PostPreview = ({ post }) => {
 		const json = await res.json();
 
 		if (res.ok) {
-			dispatch({ type: 'UPDATE_POST', payload: json });
+			dispatch({ type: 'UPDATE_POST', payload: json.data });
 		}
 	};
 
@@ -70,7 +70,7 @@ const PostPreview = ({ post }) => {
 			);
 			const json = await res.json();
 			if (res.ok) {
-				dispatch({ type: 'DELETE_POST', payload: json });
+				dispatch({ type: 'DELETE_POST', payload: json.data });
 			}
 		}
 	};

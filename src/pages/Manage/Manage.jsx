@@ -24,7 +24,7 @@ const Manage = () => {
 			const json = await res.json();
 
 			if (res.ok) {
-				dispatch({ type: 'SET_POSTS', payload: json });
+				dispatch({ type: 'SET_POSTS', payload: json.data });
 			}
 		};
 

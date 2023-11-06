@@ -27,9 +27,9 @@ const Edit = () => {
 			);
 			const json = await res.json();
 			if (res.ok) {
-				setOriginalPost({ title: json.title, body: json.body });
-				setTitle(json.title);
-				setBody(json.body);
+				setOriginalPost({ title: json.data.title, body: json.data.body });
+				setTitle(json.data.title);
+				setBody(json.data.body);
 			}
 		};
 		getBlogPost(id);

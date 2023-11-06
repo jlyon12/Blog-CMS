@@ -21,7 +21,7 @@ const Comments = () => {
 			);
 			const json = await res.json();
 			if (res.ok) {
-				setComments(json);
+				setComments(json.data);
 			}
 		};
 		const getPost = async (id) => {
@@ -35,7 +35,7 @@ const Comments = () => {
 			);
 			const json = await res.json();
 			if (res.ok) {
-				setPost(json);
+				setPost(json.data);
 			}
 		};
 		getPostComments(id);

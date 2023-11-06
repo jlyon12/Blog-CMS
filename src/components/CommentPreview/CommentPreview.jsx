@@ -24,7 +24,7 @@ const CommentPreview = ({ post, comment, setComments }) => {
 			const json = await res.json();
 			if (res.ok) {
 				setComments((prev) =>
-					prev.filter((comment) => comment._id !== json._id)
+					prev.filter((comment) => comment._id !== json.data._id)
 				);
 			}
 		}
