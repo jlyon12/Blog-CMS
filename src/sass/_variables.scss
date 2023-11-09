@@ -40,6 +40,8 @@ $clr-btn-text-light: #ffffff;
 $clr-switch-inactive-light: #667085;
 $clr-switch-active-light: #06d6a0;
 $clr-switch-btn-light: #ffffff;
+$clr-badge-bg-light: #eef4ff;
+$clr-badge-text-light: #3538cd;
 
 $clr-error-dark: #ef476f;
 $clr-danger-dark: #ef476f;
@@ -55,6 +57,8 @@ $clr-input-bg-dark: #252f3d;
 $clr-switch-inactive-dark: #c0c5d0;
 $clr-switch-active-dark: #06d6a0;
 $clr-switch-btn-dark: #ffffff;
+$clr-badge-bg-dark: #eef4ff;
+$clr-badge-text-dark: #3538cd;
 
 // Theme Configuration
 
@@ -74,6 +78,8 @@ $themes: (
 		switchInactive: $clr-switch-inactive-light,
 		switchActive: $clr-switch-active-light,
 		switchBtn: $clr-switch-btn-light,
+		badgeBg: $clr-badge-bg-light,
+		badgeText: $clr-badge-text-light,
 	),
 	dark: (
 		danger: $clr-danger-dark,
@@ -90,6 +96,8 @@ $themes: (
 		switchInactive: $clr-switch-inactive-dark,
 		switchActive: $clr-switch-active-dark,
 		switchBtn: $clr-switch-btn-dark,
+		badgeBg: $clr-badge-bg-dark,
+		badgeText: $clr-badge-text-dark,
 	),
 );
 

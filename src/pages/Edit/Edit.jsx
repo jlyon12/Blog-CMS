@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate, useParams } from 'react-router';
+import TagsInput from 'src/components/TagsInput/TagsInput';
 import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import styles from './Edit.module.scss';
@@ -9,6 +10,7 @@ const Edit = () => {
 
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
+	const [tags, setTags] = useState([]);
 	const { id } = useParams();
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
@@ -27,9 +29,14 @@ const Edit = () => {
 			);
 			const json = await res.json();
 			if (res.ok) {
-				setOriginalPost({ title: json.data.title, body: json.data.body });
+				setOriginalPost({
+					title: json.data.title,
+					body: json.data.body,
+					tags: json.data.tags,
+				});
 				setTitle(json.data.title);
 				setBody(json.data.body);
+				setTags(json.data.tags);
 			}
 		};
 		getBlogPost(id);
@@ -49,7 +56,11 @@ const Edit = () => {
 		);
 	};
 	const changeIsDetected = () => {
-		if (title === originalPost.title && body === originalPost.body) {
+		if (
+			title === originalPost.title &&
+			body === originalPost.body &&
+			tags === originalPost.tags
+		) {
 			return false;
 		} else return true;
 	};
@@ -58,13 +69,17 @@ const Edit = () => {
 		if (!changeIsDetected()) {
 			alert('No changes have been detected. Unable to process request.');
 		}
-		const post = { title, body };
+		const post = { title, body, tags };
 		updatePost(post);
 		Navigate('/manage');
 	};
 	return (
 		<main className={styles.main}>
-			<form className={styles.form} onSubmit={handleSubmit}>
+			<form
+				className={styles.form}
+				onSubmit={handleSubmit}
+				onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
+			>
 				<fieldset>
 					<legend>Create Blog</legend>
 					<label className={styles.formControl}>
@@ -114,6 +129,10 @@ const Edit = () => {
 						}}
 						onEditorChange={() => setBody(editorRef.current.getContent())}
 					/>
+					<label className={styles.formControl}>
+						Post Tags
+						<TagsInput tags={tags} setTags={setTags} />
+					</label>
 				</fieldset>
 				<button className={styles.btn}>Edit Blog</button>
 			</form>

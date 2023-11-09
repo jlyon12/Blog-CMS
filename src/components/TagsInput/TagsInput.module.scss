@@ -1,0 +1,61 @@
+@use '/src/sass/index.scss' as *;
+
+.tagsContainer {
+	@include themify($themes) {
+		border: 2px solid themed('inputBorder');
+	}
+	padding: $padding-2;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: $gap-4;
+}
+
+.tagItem {
+	@include badge;
+	@include themify($themes) {
+		background-color: themed(badgeBg);
+		color: themed(badgeText);
+	}
+	font-size: $fs-sm;
+	font-weight: $fw-semibold;
+	line-height: 20px;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: $gap-2;
+	padding: $padding-1 $padding-2;
+
+	border-radius: 8px;
+	&:hover {
+		@include themify($themes) {
+			background-color: themed('error');
+
+			color: themed('text');
+		}
+		.close {
+			visibility: visible;
+		}
+	}
+}
+.text {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	// margin-left: $margin-2;
+	cursor: pointer;
+}
+.close {
+	visibility: hidden;
+	// margin-right: $margin-2;
+	@include themify($themes) {
+		color: themed('text');
+	}
+}
+.input {
+	flex-grow: 1;
+	// width: 100%;
+	margin-left: auto;
+}

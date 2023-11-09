@@ -3,10 +3,12 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router';
 import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
+import TagsInput from 'src/components/TagsInput/TagsInput';
 import styles from './Create.module.scss';
 const Create = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
+	const [tags, setTags] = useState([]);
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
 	const { darkMode } = useDarkModeContext();
@@ -25,13 +27,17 @@ const Create = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const post = { title, body };
+		const post = { title, body, tags };
 		createPost(post);
 		Navigate('/manage');
 	};
 	return (
 		<main className={styles.main}>
-			<form className={styles.form} onSubmit={handleSubmit}>
+			<form
+				className={styles.form}
+				onSubmit={handleSubmit}
+				onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
+			>
 				<fieldset>
 					<legend>Create Blog</legend>
 					<label className={styles.formControl}>
@@ -81,6 +87,10 @@ const Create = () => {
 						}}
 						onEditorChange={() => setBody(editorRef.current.getContent())}
 					/>
+					<label className={styles.formControl}>
+						Post Tags
+						<TagsInput tags={tags} setTags={setTags} />
+					</label>
 				</fieldset>
 				<button className={styles.btn}>Post Blog</button>
 			</form>
