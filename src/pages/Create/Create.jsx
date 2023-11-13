@@ -9,27 +9,42 @@ const Create = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState([]);
+	const [errors, setErrors] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
 	const { darkMode } = useDarkModeContext();
 	const editorRef = useRef(null);
 
 	const createPost = async (post) => {
-		return await fetch(`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${user.token}`,
-			},
-			body: JSON.stringify(post),
-		});
+		setErrors(null);
+		setIsLoading(true);
+		const res = await fetch(
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${user.token}`,
+				},
+				body: JSON.stringify(post),
+			}
+		);
+		const json = await res.json();
+		if (!res.ok) {
+			setIsLoading(false);
+			setErrors(json.errors);
+		}
+		if (res.ok) {
+			setIsLoading(false);
+			Navigate('/manage');
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const post = { title, body, tags };
 		createPost(post);
-		Navigate('/manage');
 	};
 	return (
 		<main className={styles.main}>
@@ -43,6 +58,7 @@ const Create = () => {
 					<label className={styles.formControl}>
 						Title
 						<input
+							required
 							type="text"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
@@ -92,7 +108,18 @@ const Create = () => {
 						<TagsInput tags={tags} setTags={setTags} />
 					</label>
 				</fieldset>
-				<button className={styles.btn}>Post Blog</button>
+
+				<button disabled={isLoading} className={styles.btn}>
+					Post Blog
+				</button>
+				{errors &&
+					errors.map((error) => {
+						return (
+							<p key={error} className={styles.error}>
+								{error.detail}
+							</p>
+						);
+					})}
 			</form>
 		</main>
 	);

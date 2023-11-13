@@ -46,7 +46,7 @@ const Comments = () => {
 			<section>
 				<h2 className={styles.sectionTitle}>Manage Comments</h2>
 				<h3>{post && post.title}</h3>
-				{comments &&
+				{comments && comments.length > 0 ? (
 					comments.map((comment) => (
 						<CommentPreview
 							key={comment._id}
@@ -54,7 +54,10 @@ const Comments = () => {
 							comment={comment}
 							setComments={setComments}
 						/>
-					))}
+					))
+				) : (
+					<p>There are no comments for this post</p>
+				)}
 			</section>
 		</main>
 	);

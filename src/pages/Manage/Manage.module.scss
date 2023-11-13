@@ -18,3 +18,18 @@
 	font-size: $fs-lg;
 	font-weight: $fw-bold;
 }
+
+.spinner,
+.noPosts,
+.link {
+	margin: 0 auto;
+}
+
+.link {
+	@include link-reset;
+	@include btn-primary;
+	@include themify($themes) {
+		background-color: themed(btnBg);
+		color: themed('btnText');
+	}
+}
