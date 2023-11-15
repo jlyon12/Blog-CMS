@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router';
+import { DotLoader } from 'react-spinners';
 import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
 import TagsInput from 'src/components/TagsInput/TagsInput';
@@ -9,6 +10,9 @@ const Create = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState([]);
+	const [file, setFile] = useState(null);
+	const [img_src, setImg_src] = useState('');
+
 	const [errors, setErrors] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const Navigate = useNavigate();
@@ -24,10 +28,9 @@ const Create = () => {
 			{
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
 					Authorization: `Bearer ${user.token}`,
 				},
-				body: JSON.stringify(post),
+				body: post,
 			}
 		);
 		const json = await res.json();
@@ -43,7 +46,12 @@ const Create = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const post = { title, body, tags };
+		const post = new FormData();
+		post.append('img', file);
+		post.append('title', title);
+		post.append('body', body);
+		post.append('img_src', img_src);
+		tags.forEach((tag) => post.append('tags[]', tag));
 		createPost(post);
 	};
 	return (
@@ -62,6 +70,25 @@ const Create = () => {
 							type="text"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Featured Image
+						<input
+							required
+							type="file"
+							name="img"
+							accept="image/*"
+							onChange={(e) => setFile(e.target.files[0])}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Image Credit/Source
+						<input
+							required
+							type="text"
+							value={img_src}
+							onChange={(e) => setImg_src(e.target.value)}
 						/>
 					</label>
 					<Editor
@@ -112,6 +139,11 @@ const Create = () => {
 				<button disabled={isLoading} className={styles.btn}>
 					Post Blog
 				</button>
+				<DotLoader
+					color="#6941c6"
+					className={styles.spinner}
+					loading={isLoading}
+				/>
 				{errors &&
 					errors.map((error) => {
 						return (

@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate, useParams } from 'react-router';
+import { DotLoader } from 'react-spinners';
+
 import TagsInput from 'src/components/TagsInput/TagsInput';
 import useAuthContext from 'src/hooks/useAuthContext';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
@@ -11,6 +13,11 @@ const Edit = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState([]);
+	const [file, setFile] = useState(null);
+	const [img_src, setImg_src] = useState('');
+	const [errors, setErrors] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
+
 	const { id } = useParams();
 	const Navigate = useNavigate();
 	const { user } = useAuthContext();
@@ -37,29 +44,41 @@ const Edit = () => {
 				setTitle(json.data.title);
 				setBody(json.data.body);
 				setTags(json.data.tags);
+				setImg_src(json.data.img.src);
 			}
 		};
 		getBlogPost(id);
 	}, [id, user.token]);
 
 	const updatePost = async (post) => {
-		return await fetch(
+		setErrors(null);
+		setIsLoading(true);
+		const res = await fetch(
 			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/posts/${id}`,
 			{
 				method: 'PATCH',
 				headers: {
-					'Content-Type': 'application/json',
 					Authorization: `Bearer ${user.token}`,
 				},
-				body: JSON.stringify(post),
+				body: post,
 			}
 		);
+		const json = await res.json();
+		if (!res.ok) {
+			setIsLoading(false);
+			setErrors(json.errors);
+		}
+		if (res.ok) {
+			setIsLoading(false);
+			Navigate('/manage');
+		}
 	};
 	const changeIsDetected = () => {
 		if (
 			title === originalPost.title &&
 			body === originalPost.body &&
-			tags === originalPost.tags
+			tags === originalPost.tags &&
+			img_src === originalPost.img_src
 		) {
 			return false;
 		} else return true;
@@ -69,9 +88,16 @@ const Edit = () => {
 		if (!changeIsDetected()) {
 			alert('No changes have been detected. Unable to process request.');
 		}
-		const post = { title, body, tags };
+
+		const post = new FormData();
+		if (file) {
+			post.append('img', file);
+		}
+		post.append('title', title);
+		post.append('body', body);
+		post.append('img_src', img_src);
+		tags.forEach((tag) => post.append('tags[]', tag));
 		updatePost(post);
-		Navigate('/manage');
 	};
 	return (
 		<main className={styles.main}>
@@ -88,6 +114,24 @@ const Edit = () => {
 							type="text"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Featured Image (Replace)
+						<input
+							type="file"
+							name="img"
+							accept="image/*"
+							onChange={(e) => setFile(e.target.files[0])}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Image Credit/Source
+						<input
+							required
+							type="text"
+							value={img_src}
+							onChange={(e) => setImg_src(e.target.value)}
 						/>
 					</label>
 					<Editor
@@ -135,6 +179,19 @@ const Edit = () => {
 					</label>
 				</fieldset>
 				<button className={styles.btn}>Edit Blog</button>
+				<DotLoader
+					color="#6941c6"
+					className={styles.spinner}
+					loading={isLoading}
+				/>
+				{errors &&
+					errors.map((error) => {
+						return (
+							<p key={error} className={styles.error}>
+								{error.detail}
+							</p>
+						);
+					})}
 			</form>
 		</main>
 	);
