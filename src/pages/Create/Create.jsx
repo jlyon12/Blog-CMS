@@ -11,8 +11,8 @@ const Create = () => {
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState([]);
 	const [file, setFile] = useState(null);
-	const [img_src, setImg_src] = useState('');
-
+	const [imgSrc, setImgSrc] = useState('');
+	const [imgSrcLink, setImgSrcLink] = useState('');
 	const [errors, setErrors] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const Navigate = useNavigate();
@@ -50,7 +50,8 @@ const Create = () => {
 		post.append('img', file);
 		post.append('title', title);
 		post.append('body', body);
-		post.append('img_src', img_src);
+		post.append('img_src', imgSrc);
+		post.append('img_src_link', imgSrcLink);
 		tags.forEach((tag) => post.append('tags[]', tag));
 		createPost(post);
 	};
@@ -83,12 +84,21 @@ const Create = () => {
 						/>
 					</label>
 					<label className={styles.formControl}>
-						Image Credit/Source
+						Image Credit
 						<input
 							required
 							type="text"
-							value={img_src}
-							onChange={(e) => setImg_src(e.target.value)}
+							value={imgSrc}
+							onChange={(e) => setImgSrc(e.target.value)}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Image Source URL
+						<input
+							required
+							type="text"
+							value={imgSrcLink}
+							onChange={(e) => setImgSrcLink(e.target.value)}
 						/>
 					</label>
 					<Editor

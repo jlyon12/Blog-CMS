@@ -14,7 +14,8 @@ const Edit = () => {
 	const [body, setBody] = useState('');
 	const [tags, setTags] = useState([]);
 	const [file, setFile] = useState(null);
-	const [img_src, setImg_src] = useState('');
+	const [imgSrc, setImgSrc] = useState('');
+	const [imgSrcLink, setImgSrcLink] = useState('');
 	const [errors, setErrors] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -44,7 +45,8 @@ const Edit = () => {
 				setTitle(json.data.title);
 				setBody(json.data.body);
 				setTags(json.data.tags);
-				setImg_src(json.data.img.src);
+				setImgSrc(json.data.img.src);
+				setImgSrcLink(json.data.img.src_link);
 			}
 		};
 		getBlogPost(id);
@@ -78,7 +80,8 @@ const Edit = () => {
 			title === originalPost.title &&
 			body === originalPost.body &&
 			tags === originalPost.tags &&
-			img_src === originalPost.img_src
+			imgSrc === originalPost.img_src &&
+			imgSrcLink === originalPost.img_src_link
 		) {
 			return false;
 		} else return true;
@@ -95,7 +98,8 @@ const Edit = () => {
 		}
 		post.append('title', title);
 		post.append('body', body);
-		post.append('img_src', img_src);
+		post.append('img_src', imgSrc);
+		post.append('img_src_link', imgSrcLink);
 		tags.forEach((tag) => post.append('tags[]', tag));
 		updatePost(post);
 	};
@@ -126,12 +130,21 @@ const Edit = () => {
 						/>
 					</label>
 					<label className={styles.formControl}>
-						Image Credit/Source
+						Image Credit
 						<input
 							required
 							type="text"
-							value={img_src}
-							onChange={(e) => setImg_src(e.target.value)}
+							value={imgSrc}
+							onChange={(e) => setImgSrc(e.target.value)}
+						/>
+					</label>
+					<label className={styles.formControl}>
+						Image Source URL
+						<input
+							required
+							type="text"
+							value={imgSrcLink}
+							onChange={(e) => setImgSrcLink(e.target.value)}
 						/>
 					</label>
 					<Editor
