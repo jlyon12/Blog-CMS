@@ -12,7 +12,7 @@ const useLogin = () => {
 		setError(null);
 
 		const res = await fetch(
-			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/user/login/admin`,
+			`${import.meta.env.VITE_API_CROSS_ORIGIN}/api/users/login/admin`,
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
