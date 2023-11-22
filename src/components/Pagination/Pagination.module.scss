@@ -1,0 +1,48 @@
+@use '/src/sass/index.scss' as *;
+
+.paginationContainer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	gap: calc($gap-4 * 1.25);
+	@include breakpoint-md {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+.arrowBtn {
+	@include btn-reset;
+	display: flex;
+	align-items: center;
+	gap: $gap-2;
+	&:hover {
+		@include themify($themes) {
+			color: themed(textAccent);
+		}
+	}
+}
+.pageNumbersContainer {
+	display: flex;
+	align-items: center;
+	gap: $gap-4;
+}
+.pageBtn,
+.pageBtnActive {
+	@include btn-reset;
+	display: flex;
+	width: 40px;
+	padding: 12px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	align-self: stretch;
+	border-radius: 8px;
+}
+
+.pageBtnActive {
+	@include themify($themes) {
+		background-color: themed(text);
+		color: themed(bg);
+	}
+}

@@ -33,3 +33,27 @@
 		color: themed('btnText');
 	}
 }
+.querySelectors {
+	display: flex;
+	gap: $gap-4;
+	align-items: center;
+	justify-content: flex-end;
+	label[for='limit'] {
+		display: flex;
+		gap: $gap-2;
+		align-items: center;
+	}
+	.total {
+		margin-right: auto;
+		font-size: $fs-sm;
+		@include themify($themes) {
+			color: themed('textAlt');
+		}
+	}
+	.toggleContainer {
+		display: flex;
+		align-items: center;
+		gap: $gap-2;
+		// margin-left: auto;
+	}
+}
