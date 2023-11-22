@@ -1,12 +1,35 @@
 @use '/src/sass/index.scss' as *;
 .post {
 	display: grid;
-	gap: $gap-2;
-
+	grid-template-columns: auto 1fr;
+	gap: $gap-4;
+	// align-content: center;
+	.img {
+		display: none;
+		align-self: center;
+		grid-row: 1/4;
+		max-height: 200px;
+		display: flex;
+		aspect-ratio: 1/1;
+		img {
+			display: none;
+			object-fit: cover;
+			width: 100%;
+		}
+		@include breakpoint-md {
+			img {
+				display: block;
+			}
+		}
+	}
 	.titleContainer {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		gap: $gap-4;
+		@include breakpoint-md {
+			flex-direction: row;
+		}
 	}
 	.postActions {
 		display: flex;

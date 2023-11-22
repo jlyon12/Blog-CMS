@@ -1,7 +1,7 @@
 @use 'src/sass/index.scss' as *;
 
 .main {
-	padding: calc($padding-4 * 2);
+	padding: calc($padding-4);
 	display: grid;
 
 	gap: calc($padding-4 * 2);
@@ -9,6 +9,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: calc($gap-4 * 2);
+	}
+	@include breakpoint-md {
+		padding: calc($padding-4 * 2);
 	}
 }
 .sectionTitle {

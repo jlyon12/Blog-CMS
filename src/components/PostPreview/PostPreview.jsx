@@ -78,6 +78,9 @@ const PostPreview = ({ post }) => {
 	return (
 		<>
 			<div key={post._id} className={styles.post}>
+				<div to={`/posts/${post._id}`} className={styles.img}>
+					<img src={post.img.url} alt="" />
+				</div>
 				<div className={styles.titleContainer}>
 					<h3 className={styles.postTitle}>{post.title}</h3>
 					{post.is_published && (
@@ -131,6 +134,9 @@ PostPreview.propTypes = {
 		updatedAt: propTypes.string,
 		is_published: propTypes.bool,
 		comments: propTypes.array,
+		img: propTypes.shape({
+			url: propTypes.string,
+		}),
 	}),
 };
 export default PostPreview;
