@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MdOutlineMenu, MdClose } from 'react-icons/md';
 import styles from './Header.module.scss';
 import useDarkModeContext from 'src/hooks/useDarkModeContext';
@@ -18,7 +18,6 @@ const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.navContainer}>
-				<Link>Admin</Link>
 				<button className={styles.menuBtn} onClick={toggleNav}>
 					<MdOutlineMenu size={32} />
 				</button>
@@ -27,14 +26,29 @@ const Header = () => {
 						className={`
 							${styles.navMenu} ${isOpen ? styles.mobileMenu : styles.desktopMenu}`}
 					>
-						<Link className={styles.mobileMenuTitle}>Admin</Link>
 						{user ? (
 							<ul>
 								<li>
-									<Link to="manage">Manage</Link>
+									<NavLink
+										onClick={toggleNav}
+										className={({ isActive }) =>
+											isActive ? styles.active : undefined
+										}
+										to="manage"
+									>
+										Manage
+									</NavLink>
 								</li>
 								<li>
-									<Link to="create">Create</Link>
+									<NavLink
+										onClick={toggleNav}
+										className={({ isActive }) =>
+											isActive ? styles.active : undefined
+										}
+										to="create"
+									>
+										Create
+									</NavLink>
 								</li>
 								<li>
 									<button onClick={logout}>Logout</button>
@@ -43,7 +57,15 @@ const Header = () => {
 						) : (
 							<ul>
 								<li>
-									<Link to="/login">Login</Link>
+									<NavLink
+										onClick={toggleNav}
+										className={({ isActive }) =>
+											isActive ? styles.active : undefined
+										}
+										to="/login"
+									>
+										Login
+									</NavLink>
 								</li>
 							</ul>
 						)}

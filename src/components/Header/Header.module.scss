@@ -3,7 +3,7 @@
 .navContainer {
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	font-size: $fs-md;
 	padding: $padding-5;
@@ -25,6 +25,13 @@
 	a {
 		@include nav-link;
 		margin: $margin-2;
+	}
+	.active {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+		@include themify($themes) {
+			text-decoration-color: themed('textAccent');
+		}
 	}
 	button {
 		@include btn-reset;
@@ -57,6 +64,9 @@
 	}
 
 	.navMenu {
+		ul {
+			margin-top: auto;
+		}
 		@include themify($themes) {
 			color: themed('text');
 			background-color: themed('bg');

@@ -18,6 +18,7 @@ const Router = () => {
 			element: <PageLayout />,
 			children: [
 				{
+					index: true,
 					path: 'login',
 					element: user ? <Navigate to="/manage" /> : <Login />,
 				},
@@ -25,8 +26,9 @@ const Router = () => {
 					path: '/',
 					element: <ProtectedRoute />,
 					children: [
-						{ path: 'create', element: <Create /> },
 						{ path: 'manage', element: <Manage /> },
+						{ path: 'create', element: <Create /> },
+
 						{ path: 'edit/:id', element: <Edit /> },
 						{ path: 'comments/:id', element: <Comments /> },
 					],
