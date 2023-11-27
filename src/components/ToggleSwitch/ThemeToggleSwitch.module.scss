@@ -33,7 +33,9 @@
 		align-items: center;
 	}
 	.inner:before {
-		content: url('/src/assets/icons/sun.svg');
+		background: url('/src/assets/icons/sun.svg') center no-repeat;
+		content: '';
+		background-position-x: 16px;
 		@include themify($themes) {
 			background-color: themed('text');
 		}
@@ -41,7 +43,10 @@
 		justify-content: left;
 	}
 	.inner:after {
-		content: url('/src/assets/icons/moon.svg');
+		background: url('/src/assets/icons/moon.svg') center no-repeat;
+		content: '';
+		background-position-x: 58px;
+
 		@include themify($themes) {
 			background-color: themed('text');
 		}
