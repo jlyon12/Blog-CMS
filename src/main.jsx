@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Router from 'src/router';
+import Router from 'src/Router';
 import { DarkModeContextProvider } from 'src/context/DarkModeContext';
 import { AuthContextProvider } from 'src/context/AuthContext';
 import { PostsContextProvider } from 'src/context/PostsContext';
