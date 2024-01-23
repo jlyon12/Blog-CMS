@@ -14,20 +14,20 @@
 <div align="center">
 
 <h3 align="center">Blog-CMS</h3>
- <a href="https://github.com/probableactions/Blog-CMS">
+ <a href="https://github.com/jlyon12/Blog-CMS">
     <img src="screenshots/header_logo.jpg" alt="Logo" >
   </a>
   <p align="center">
     A simple blog content management site supported by a REST API.
     <br />
-    <a href="https://github.com/probableactions/Blog-CMS"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jlyon12/Blog-CMS"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://blog-cms-kappa.vercel.app">View Demo</a>
     ·
-    <a href="https://github.com/probableactions/Blog-CMS/issues">Report Bug</a>
+    <a href="https://github.com/jlyon12/Blog-CMS/issues">Report Bug</a>
     ·
-    <a href="https://github.com/probableactions/Blog-CMS/issues">Request Feature</a>
+    <a href="https://github.com/jlyon12/Blog-CMS/issues">Request Feature</a>
   </p>
 </div>
 
@@ -82,8 +82,8 @@ The CMS allows for the admin to create and modify blog posts. Posts can be publi
 
 ## Related Repos
 
-- [Blog-Client](https://github.com/probableactions/Blog-Client)
-- [Blog-API](https://github.com/probableactions/Blog-API)
+- [Blog-Client](https://github.com/jlyon12/Blog-Client)
+- [Blog-API](https://github.com/jlyon12/Blog-API)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,7 +91,7 @@ The CMS allows for the admin to create and modify blog posts. Posts can be publi
 
 ## Roadmap
 
-See the [open issues](https://github.com/probableactions/Blog-CMS/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/jlyon12/Blog-CMS/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,7 +124,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/probableactions/Blog-CMS](https://github.com/probableactions/Blog-CMS)
+Project Link: [https://github.com/jlyon12/Blog-CMS](https://github.com/jlyon12/Blog-CMS)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -143,16 +143,16 @@ Project Link: [https://github.com/probableactions/Blog-CMS](https://github.com/p
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/probableactions/Blog-CMS.svg?style=for-the-badge
-[contributors-url]: https://github.com/probableactions/Blog-CMS/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/probableactions/Blog-CMS.svg?style=for-the-badge
-[forks-url]: https://github.com/probableactions/Blog-CMS/network/members
-[stars-shield]: https://img.shields.io/github/stars/probableactions/Blog-CMS.svg?style=for-the-badge
-[stars-url]: https://github.com/probableactions/Blog-CMS/stargazers
-[issues-shield]: https://img.shields.io/github/issues/probableactions/Blog-CMS.svg?style=for-the-badge
-[issues-url]: https://github.com/probableactions/Blog-CMS/issues
-[license-shield]: https://img.shields.io/github/license/probableactions/Blog-CMS.svg?style=for-the-badge
-[license-url]: https://github.com/probableactions/Blog-CMS/blob/master/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/jlyon12/Blog-CMS.svg?style=for-the-badge
+[contributors-url]: https://github.com/jlyon12/Blog-CMS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jlyon12/Blog-CMS.svg?style=for-the-badge
+[forks-url]: https://github.com/jlyon12/Blog-CMS/network/members
+[stars-shield]: https://img.shields.io/github/stars/jlyon12/Blog-CMS.svg?style=for-the-badge
+[stars-url]: https://github.com/jlyon12/Blog-CMS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jlyon12/Blog-CMS.svg?style=for-the-badge
+[issues-url]: https://github.com/jlyon12/Blog-CMS/issues
+[license-shield]: https://img.shields.io/github/license/jlyon12/Blog-CMS.svg?style=for-the-badge
+[license-url]: https://github.com/jlyon12/Blog-CMS/blob/master/LICENSE.md
 [product-screenshot]: screenshots/homepage.png
 [product-screenshot-2]: screenshots/editor.png
 [MongoDB]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
